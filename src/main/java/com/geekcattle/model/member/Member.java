@@ -33,7 +33,7 @@ public class Member extends BaseEntity {
     private String createdAt;
 
     private String updatedAt;
-
+        
     @Transient
     @JsonIgnore
     private String sort = "";

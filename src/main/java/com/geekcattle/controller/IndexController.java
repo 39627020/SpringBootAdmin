@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -32,8 +35,11 @@ public class IndexController {
 
     @ResponseBody
     @RequestMapping(value = "/testPost",method = {RequestMethod.POST})
-    public String testpost(HttpServletRequest request){
-        return request.getParameter("rq");
+    public Map<String,Object> testpost(HttpServletRequest request){
+    		String date = request.getParameter("rq");
+    		Map<String,Object> result = new HashMap<String,Object>();
+    		result.put("Date", date);
+        return result;
     }
 
 

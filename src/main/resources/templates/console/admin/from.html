@@ -39,6 +39,30 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="fullname" class="col-sm-2 control-label">全名</label>
+                            <div class="col-sm-10">
+								<input type="text" name="fullname" class="form-control" id="fullname" th:value="${admin.fullname}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fullname" class="col-sm-2 control-label">电话</label>
+                            <div class="col-sm-10">
+								<input type="text" name="mobile" class="form-control" id="mobile" th:value="${admin.mobile}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender" class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-10">
+                                <select name="gender" class="form-control" id="gender">
+                                    <option th:selected="${#strings.equals(admin.gender, 1)}" value="1">男</option>
+                                    <option th:selected="${#strings.equals(admin.gender, 0)}" value="0">女</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="password" class="col-sm-2 control-label">角色</label>
                             <div class="col-sm-10">
                                 <label class="checkbox-inline" th:each="role:${roleLists}">

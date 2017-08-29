@@ -293,3 +293,16 @@ INSERT INTO `role_menu` VALUES ('36f1dd1296674fc08484c5abf6a5806b', 'e5f52fe2115
 INSERT INTO `role_menu` VALUES ('cbe8356d64a8433cb5dad5c7fccf8dce', 'e5f52fe2115e46229c60803e478d2e9a');
 INSERT INTO `role_menu` VALUES ('cbe8356d64a8433cb5dad5c7fccf8dce', 'e85b2fb3e6ee4d0a9711c577bc842821');
 INSERT INTO `role_menu` VALUES ('36f1dd1296674fc08484c5abf6a5806b', 'f4237d06c0c94906bdc04f5ed19cbaeb');
+
+CREATE TABLE `geekcattle`.`channel` (
+  `cid` VARCHAR(32) NOT NULL,
+  `no` VARCHAR(10) NOT NULL,
+  `channelname` VARCHAR(45) NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`cid`));
+
+ALTER TABLE `geekcattle`.`admin` 
+ADD COLUMN `fullname` VARCHAR(45) NULL AFTER `updated_at`,
+ADD COLUMN `mobile` VARCHAR(45) NULL AFTER `fullname`,
+ADD COLUMN `gender` INT NULL AFTER `mobile`;

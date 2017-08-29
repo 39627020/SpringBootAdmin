@@ -2,3 +2,9 @@
 target/
 tpid
 
+
+\.DS_Store
+
+*.prefs
+
+\.settings/

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geekcattle.mapper.console.ChannelMapper">
+  <resultMap id="BaseResultMap" type="com.geekcattle.model.console.Channel">
+      <id column="cid" jdbcType="VARCHAR" property="cid" />
+      <result column="no" jdbcType="VARCHAR" property="no" />
+      <result column="channelname" jdbcType="VARCHAR" property="channelname" />
+      <result column="created_at" jdbcType="DATE" property="createdAt" />
+      <result column="updated_at" jdbcType="DATE" property="updatedAt" />
+  </resultMap>
+
+  <!--根据用户名获取用户信息-->
+  <select id="selectByNo" parameterType="String" resultMap="BaseResultMap">
+    select *  from channel where no = #{no};
+  </select>
+
+  <select id="selectById" parameterType="String" resultMap="BaseResultMap">
+    select *  from channel where id = #{id};
+  </select>
+
+</mapper>

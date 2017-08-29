@@ -1,6 +1,8 @@
 import com.geekcattle.util.CamelCaseUtil;
 import com.geekcattle.util.DateUtil;
 import com.geekcattle.util.UuidUtil;
+
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 /**
@@ -31,6 +33,13 @@ public class TestUtil{
         for (int i = 0; i < ss.length; i++) {
             System.out.println(ss[i]);
         }
+    }
+
+    @Test
+    public void testStringUtil() {
+    		System.out.println(StringUtils.isEmpty(null));
+    		System.out.println(StringUtils.isEmpty(""));
+    		System.out.println(StringUtils.isBlank(" "));
     }
 
 }

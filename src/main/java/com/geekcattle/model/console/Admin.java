@@ -32,6 +32,28 @@ public class Admin extends BaseEntity {
     private String createdAt;
 
     private String updatedAt;
+    
+    private String fullname;
+    
+    public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public int getGender() {
+		return gender;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+
+	private String mobile;
+    
+    private int gender;
 
     @Transient
     @JsonIgnore
@@ -174,5 +196,13 @@ public class Admin extends BaseEntity {
                 ", roleList=" + roleList +
                 '}';
     }
+
+	public String getFullname() {
+		return fullname;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
 
 }

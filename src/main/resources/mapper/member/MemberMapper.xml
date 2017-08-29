@@ -10,10 +10,4 @@
       <result column="created_at" jdbcType="DATE" property="createdAt" />
       <result column="updated_at" jdbcType="DATE" property="updatedAt" />
   </resultMap>
-
-  <!--根据用户名获取用户信息-->
-  <select id="selectByUsername" parameterType="String" resultMap="BaseResultMap">
-    select *  from member where account = #{uername};
-  </select>
-
 </mapper>
