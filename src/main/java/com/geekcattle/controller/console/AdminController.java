@@ -4,14 +4,11 @@
 
 package com.geekcattle.controller.console;
 
-import com.geekcattle.model.console.Admin;
-import com.geekcattle.model.console.AdminRole;
-import com.geekcattle.model.console.Role;
-import com.geekcattle.service.console.AdminRoleService;
-import com.geekcattle.service.console.AdminService;
-import com.geekcattle.service.console.RoleService;
-import com.geekcattle.util.*;
-import com.github.pagehelper.PageInfo;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
@@ -22,12 +19,25 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.*;
-import tk.mybatis.mapper.entity.Example;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
+import com.geekcattle.model.console.Admin;
+import com.geekcattle.model.console.AdminRole;
+import com.geekcattle.model.console.Role;
+import com.geekcattle.service.console.AdminRoleService;
+import com.geekcattle.service.console.AdminService;
+import com.geekcattle.service.console.RoleService;
+import com.geekcattle.util.DateUtil;
+import com.geekcattle.util.PasswordUtil;
+import com.geekcattle.util.ReturnUtil;
+import com.geekcattle.util.UuidUtil;
+import com.github.pagehelper.PageInfo;
+
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import tk.mybatis.mapper.entity.Example;
 
 /**
  * author geekcattle
@@ -46,12 +56,15 @@ public class AdminController {
     @Autowired
     private RoleService roleService;
 
+    @ApiOperation(value="用户一览", notes="用户一览画面")
     @RequiresPermissions("admin:index")
     @RequestMapping(value = "/index", method = {RequestMethod.GET})
     public String index(Model model) {
         return "console/admin/index";
     }
 
+    @ApiOperation(value="修改用户", notes="修改用户数据")
+    @ApiImplicitParam(name = "admin", value = "用户详细实体admin", required = true, dataType = "User")
     @RequiresPermissions("admin:edit")
     @RequestMapping(value = "/from", method = {RequestMethod.GET})
     public String from(Admin admin, Model model) {
